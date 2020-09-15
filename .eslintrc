@@ -1,0 +1,107 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["react", "react-hooks"],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "no-console": "error",
+    "no-eval": "error",
+    "no-debugger": "error",
+    "semi": ["error", "always"],
+    "comma-dangle": ["error", "always-multiline"],
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    "no-case-declarations": "off",
+    "no-nested-ternary": "off",
+    "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-double"],
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "MemberExpression": 1,
+        "ArrayExpression": 1,
+        "ObjectExpression": 1,
+        "ImportDeclaration": 1
+      }
+    ],
+    "react/jsx-indent": [2, 2],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-closing-bracket-location": [1, "tag-aligned"],
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": "parens",
+        "assignment": "parens",
+        "return": "parens-new-line",
+        "arrow": "parens",
+        "condition": "ignore",
+        "logical": "ignore",
+        "prop": "ignore"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-first-prop-new-line": ["error", "multiline"],
+    "react/jsx-props-no-spreading": "off",
+    "prefer-promise-reject-errors": "off",
+    "react/jsx-filename-extension": "off",
+    "react/no-this-in-sfc": "off",
+    "react/jsx-curly-spacing": [
+      2,
+      {
+        "when": "never",
+        "children": true
+      }
+    ],
+    "react/prop-types": 2,
+    "react/require-default-props": 0,
+    "no-return-assign": "off",
+    "no-else-return": "off",
+    "react/jsx-one-expression-per-line": 0,
+    "no-param-reassign": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "consistent-return": "off",
+    "no-use-before-define": "off",
+    "import/prefer-default-export": "off",
+    "arrow-parens": ["error", "as-needed"],
+    "array-bracket-spacing": "error",
+    "object-curly-spacing": ["error", "always"],
+    "no-shadow": "off",
+    "react/no-array-index-key": "off",
+    "arrow-spacing": "error",
+    "space-before-blocks": "error",
+    "keyword-spacing": "error",
+    "space-infix-ops": ["error", { "int32Hint": false }],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "no-trailing-spaces": "error",
+    "eol-last": "error",
+    "func-names": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "import/no-cycle": "off"
+  }
+}
