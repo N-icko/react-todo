@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './FormInput.css';
 
-const Form = ({ addTodoHandler }) => {
+const Form = ({ addTodoHandler, setFilter }) => {
   const ref = useRef(null);
 
   const onAddButtonHandler = event => {
@@ -12,11 +12,15 @@ const Form = ({ addTodoHandler }) => {
     ref.current.value = '';
   };
 
+  const filterHandler = e => {
+    setFilter(e.target.value);
+  };
+
   return (
     <div className="container">
       <form className="row valign-wrapper">
         <div className="col m8 l8">
-          <input ref={ref} type="text" placeholder="Write your TODO task" />
+          <input className="input" ref={ref} type="text" placeholder="Write your TODO task" />
         </div>
         <div className="col m2 l2">
           <button
@@ -27,15 +31,15 @@ const Form = ({ addTodoHandler }) => {
             <i className="small material-icons">playlist_add</i>
           </button>
         </div>
-        <div className="col m2 l2">
-          <label htmlFor="done-items">
-            <input type="checkbox" id="done-items" />
-            <span>Show complete</span>
-          </label>
-          <label htmlFor="undone-items">
-            <input type="checkbox" id="undone-items" />
-            <span>Show incomplete</span>
-          </label>
+        <div className="col input-field m2 l2">
+          <select
+            onChange={filterHandler}
+            className="browser-default"
+          >
+            <option value="all">All</option>
+            <option value="complete">Complete</option>
+            <option value="incomplete">Incomplete</option>
+          </select>
         </div>
       </form>
     </div>
@@ -44,6 +48,7 @@ const Form = ({ addTodoHandler }) => {
 
 Form.propTypes = {
   addTodoHandler: PropTypes.func,
+  setFilter: PropTypes.func,
 };
 
 export default Form;

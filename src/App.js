@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from './Components/FormInput/Form';
 import TodoList from './Components/TodoList/TodoList';
 import { Header } from './Components/Header/Header';
@@ -7,21 +7,65 @@ import './App.css';
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [filter, setFilter] = useState('all');
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
-  const addTodoHandler = title => {
+  useEffect(() => {
+    filterHandler();
+  }, [todos, filter]);
+
+  function filterHandler() {
+    switch (filter) {
+      case 'complete':
+        setFilteredTodos(todos.filter(item => item.complete === true));
+        break;
+      case 'incomplete':
+        setFilteredTodos(todos.filter(item => item.complete === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  }
+
+  function addTodoHandler(title) {
     const newTodo = {
       todoTitle: title,
-      id: Math.floor(Math.random() * 8),
+      id: Math.random() * 8,
       complete: false,
     };
     setTodos([newTodo, ...todos]);
-  };
+  }
+
+  function completeHandler(id) {
+    setTodos(prevState =>
+      prevState.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            complete: !item.complete,
+          };
+        }
+        return item;
+      }),
+    );
+  }
+
+  function deleteHandler(id) {
+    setTodos(prevState => prevState.filter(el => el.id !== id));
+  }
 
   return (
     <div className="main indigo lighten-5">
       <Header />
-      <Form addTodoHandler={addTodoHandler} />
-      <TodoList todos={todos} />
+      <Form addTodoHandler={addTodoHandler} setFilter={setFilter} />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        deleteHandler={deleteHandler}
+        completeHandler={completeHandler}
+        filteredTodos={filteredTodos}
+      />
     </div>
   );
 }
