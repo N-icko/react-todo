@@ -1,5 +1,10 @@
-.todo-item {
-	height: 50px;
+.todo-main {
+	height: 65vh;
+	overflow: auto;
+}
+
+.list-item {
+	padding: 0 2rem;
 }
 
 .btn {

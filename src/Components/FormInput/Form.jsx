@@ -3,39 +3,41 @@ import PropTypes from 'prop-types';
 
 import './FormInput.css';
 
-const Form = ({ addTodoHandler, setFilter }) => {
+function Form({ addTodoHandler, setFilter }) {
   const ref = useRef(null);
 
-  const onAddButtonHandler = event => {
+  function addButtonHandler(event) {
     event.preventDefault();
     addTodoHandler(ref.current.value);
     ref.current.value = '';
-  };
+  }
 
-  const filterHandler = e => {
+  function filterHandler(e) {
     setFilter(e.target.value);
-  };
+  }
 
   return (
-    <div className="container">
+    <div className="container mt2 z-depth-1">
       <form className="row valign-wrapper">
-        <div className="col m8 l8">
-          <input className="input" ref={ref} type="text" placeholder="Write your TODO task" />
+        <div className="col m8">
+          <input
+            className="input"
+            ref={ref}
+            type="text"
+            placeholder="Write your TODO task"
+          />
         </div>
-        <div className="col m2 l2">
+        <div className="col m2">
           <button
             className="waves-effect waves-light btn w100"
             type="submit"
-            onClick={onAddButtonHandler}
+            onClick={addButtonHandler}
           >
             <i className="small material-icons">playlist_add</i>
           </button>
         </div>
-        <div className="col input-field m2 l2">
-          <select
-            onChange={filterHandler}
-            className="browser-default"
-          >
+        <div className="col input-field m2">
+          <select onChange={filterHandler} className="browser-default">
             <option value="all">All</option>
             <option value="complete">Complete</option>
             <option value="incomplete">Incomplete</option>
@@ -44,7 +46,7 @@ const Form = ({ addTodoHandler, setFilter }) => {
       </form>
     </div>
   );
-};
+}
 
 Form.propTypes = {
   addTodoHandler: PropTypes.func,

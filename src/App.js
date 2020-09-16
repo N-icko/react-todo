@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Form from './Components/FormInput/Form';
 import TodoList from './Components/TodoList/TodoList';
-import { Header } from './Components/Header/Header';
+import Header from './Components/Header/Header';
 
 import './App.css';
 
@@ -12,21 +12,8 @@ function App() {
 
   useEffect(() => {
     filterHandler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos, filter]);
-
-  function filterHandler() {
-    switch (filter) {
-      case 'complete':
-        setFilteredTodos(todos.filter(item => item.complete === true));
-        break;
-      case 'incomplete':
-        setFilteredTodos(todos.filter(item => item.complete === false));
-        break;
-      default:
-        setFilteredTodos(todos);
-        break;
-    }
-  }
 
   function addTodoHandler(title) {
     const newTodo = {
@@ -55,10 +42,27 @@ function App() {
     setTodos(prevState => prevState.filter(el => el.id !== id));
   }
 
+  function filterHandler() {
+    switch (filter) {
+      case 'complete':
+        setFilteredTodos(todos.filter(item => item.complete === true));
+        break;
+      case 'incomplete':
+        setFilteredTodos(todos.filter(item => item.complete === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  }
+
   return (
     <div className="main indigo lighten-5">
       <Header />
-      <Form addTodoHandler={addTodoHandler} setFilter={setFilter} />
+      <Form
+        addTodoHandler={addTodoHandler}
+        setFilter={setFilter}
+      />
       <TodoList
         todos={todos}
         setTodos={setTodos}

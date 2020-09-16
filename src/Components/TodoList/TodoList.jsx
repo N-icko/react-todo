@@ -3,19 +3,17 @@ import PropTypes from 'prop-types';
 
 import './TodoList.css';
 
-const TodoList = ({ deleteHandler, completeHandler, filteredTodos }) => {
+function TodoList({ deleteHandler, completeHandler, filteredTodos }) {
   return (
-    <div className="todo-list container">
-      <ul>
+    <div className="container todo-main z-depth-1">
+      <ul className="todo-list">
         {filteredTodos.map(item => (
           <li
-            className={`todo-item valign-wrapper row ${item.complete ? 'complete grey-text' : ''}`}
+            className={`list-item valign-wrapper row ${item.complete ? 'complete grey-text' : ''}`}
             key={item.id}
           >
-            <div className="col s8 list-title">
-              <span className="list-text">{item.todoTitle}</span>
-            </div>
-            <div className="col s4 list-buttons">
+            <span className="col s10 list-text">{item.todoTitle}</span>
+            <div className="col s2 list-buttons center-align">
               <button
                 className={`waves-effect waves-light btn ${item.complete ? 'complete grey-text' : ''}`}
                 type="button"
@@ -40,11 +38,10 @@ const TodoList = ({ deleteHandler, completeHandler, filteredTodos }) => {
       </ul>
     </div>
   );
-};
+}
 
 TodoList.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  filteredTodos: PropTypes.array.isRequired,
+  filteredTodos: PropTypes.arrayOf(PropTypes.object),
   deleteHandler: PropTypes.func,
   completeHandler: PropTypes.func,
 };
