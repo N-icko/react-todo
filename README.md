@@ -3,8 +3,9 @@ Simple TODO react-app
 Used technologies:
 
 <ul>
-  <li>React Hooks</li>
+  <li>React + React Hooks</li>
   <li>Materialize CSS</li>
+  <li>EsLint, Prettier etc.</li>
 </ul>
 
 To see result:
