@@ -64,8 +64,7 @@ function App() {
         setFilter={setFilter}
       />
       <TodoList
-        todos={todos}
-        setTodos={setTodos}
+        filter={filter}
         deleteHandler={deleteHandler}
         completeHandler={completeHandler}
         filteredTodos={filteredTodos}
