@@ -1,4 +1,4 @@
-###Simple TODO react-app
+#Simple TODO react-app
 
 ####Used technologies:
 <ul>
@@ -7,7 +7,6 @@
 </ul>
 
 ####To see result:
-
 1. install all dependencies via `npm install`
 
 2. start app after install via `npm start`
