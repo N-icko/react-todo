@@ -5,7 +5,7 @@ Used technologies:
 <ul>
   <li>React + React Hooks</li>
   <li>Materialize CSS</li>
-  <li>EsLint, Prettier etc.</li>
+  <li>ESLint, Prettier etc.</li>
 </ul>
 
 To see result:
