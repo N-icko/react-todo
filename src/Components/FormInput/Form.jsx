@@ -24,7 +24,7 @@ function Form({ addTodoHandler, setFilter }) {
             className="input"
             ref={ref}
             type="text"
-            placeholder="Write your TODO task"
+            placeholder="Write your TODO task here..."
           />
         </div>
         <div className="col m2">

@@ -57,7 +57,7 @@ function App() {
   }
 
   return (
-    <div className="main indigo lighten-5">
+    <div className="main light-blue lighten-5">
       <Header />
       <Form
         addTodoHandler={addTodoHandler}
